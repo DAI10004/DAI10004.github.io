@@ -1,0 +1,97 @@
+3:I[5613,[],""]
+5:I[1778,[],""]
+6:I[5250,["250","static/chunks/250-d7e0a94ebe194dac.js","308","static/chunks/app/blog/%5Bslug%5D/page-3d1e32b07fbfb049.js"],""]
+4:["slug","nextjs-static-site","d"]
+0:["hsC42G5UzaLGOBSmBX9Ep",[[["",{"children":["blog",{"children":[["slug","nextjs-static-site","d"],{"children":["__PAGE__?{\"slug\":\"nextjs-static-site\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["blog",{"children":[["slug","nextjs-static-site","d"],{"children":["__PAGE__",{},["$L1","$L2",null]]},["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","blog","children","$4","children"],"loading":"$undefined","loadingStyles":"$undefined","loadingScripts":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined","styles":null}]]},["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","blog","children"],"loading":"$undefined","loadingStyles":"$undefined","loadingScripts":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined","styles":null}]]},[null,["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"children":[["$","header",null,{"className":"fixed top-0 left-0 right-0 bg-gray-900/80 backdrop-blur-md z-50 border-b border-gray-800","children":["$","div",null,{"className":"container mx-auto px-4 py-4 flex justify-between items-center","children":[["$","$L6",null,{"href":"/","className":"text-xl font-bold text-white","children":"我的博客"}],["$","nav",null,{"className":"hidden md:flex space-x-8","children":[["$","$L6",null,{"href":"/","className":"text-gray-300 hover:text-white transition-colors","children":"首页"}],["$","$L6",null,{"href":"/about","className":"text-gray-300 hover:text-white transition-colors","children":"关于"}],["$","$L6",null,{"href":"/blog","className":"text-gray-300 hover:text-white transition-colors","children":"博客"}]]}]]}]}],["$","main",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"loading":"$undefined","loadingStyles":"$undefined","loadingScripts":"$undefined","hasLoading":false,"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[],"styles":null}]}],["$","footer",null,{"className":"bg-gray-950 text-white py-8 border-t border-gray-900 mt-20","children":["$","div",null,{"className":"container mx-auto px-4","children":["$","div",null,{"className":"text-center","children":["$","p",null,{"className":"text-gray-400","children":["© ",2026," 我的博客. 保留所有权利."]}]}]}]}]]}]}],null]],[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3efd609e348630ed.css","precedence":"next","crossOrigin":""}]],"$L7"]]]]
+8:T941,<h1>Next.js 静态站点生成（SSG）详解</h1>
+<p>静态站点生成（Static Site Generation, SSG）是 Next.js 最重要的特性之一。</p>
+<h2>什么是 SSG？</h2>
+<p>SSG 在<strong>构建时</strong>（build time）生成 HTML 页面，而不是在每次请求时生成。这意味着：</p>
+<ul>
+<li>页面在部署时就已经生成好</li>
+<li>用户请求时直接返回静态 HTML</li>
+<li>无需服务器端运行时</li>
+</ul>
+<h2>SSG 的优势</h2>
+<h3>1. 性能优秀</h3>
+<ul>
+<li>静态 HTML 可以被 CDN 缓存</li>
+<li>首屏加载速度极快</li>
+<li>SEO 友好</li>
+</ul>
+<h3>2. 稳定性高</h3>
+<ul>
+<li>无需数据库</li>
+<li>无需后端服务器</li>
+<li>减少故障点</li>
+</ul>
+<h3>3. 成本低</h3>
+<ul>
+<li>可以使用 GitHub Pages 等免费托管</li>
+<li>无需运行服务器</li>
+</ul>
+<h2>Next.js 中的 SSG 实现</h2>
+<h3>基本用法</h3>
+<pre><code class="language-typescript">export default function Page({ data }) {
+  return &#x3C;div>{data}&#x3C;/div>
+}
+
+// 在构建时获取数据
+export async function getStaticProps() {
+  const data = await fetchData()
+  return {
+    props: { data }
+  }
+}
+</code></pre>
+<h3>动态路由</h3>
+<pre><code class="language-typescript">// pages/blog/[slug].tsx
+export async function getStaticPaths() {
+  const posts = await getPosts()
+  return {
+    paths: posts.map(post => ({
+      params: { slug: post.slug }
+    })),
+    fallback: false
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const post = await getPost(params.slug)
+  return {
+    props: { post }
+  }
+}
+</code></pre>
+<h2>何时使用 SSG？</h2>
+<p><strong>适合 SSG 的场景：</strong></p>
+<ul>
+<li>营销页面</li>
+<li>文档网站</li>
+<li>博客</li>
+<li>产品展示页</li>
+<li>内容更新不频繁的网站</li>
+</ul>
+<p><strong>不适合 SSG 的场景：</strong></p>
+<ul>
+<li>需要用户登录的内容</li>
+<li>实时数据</li>
+<li>用户个性化内容</li>
+<li>频繁更新的内容</li>
+</ul>
+<h2>本博客的架构</h2>
+<p>本博客采用典型的 SSG 架构：</p>
+<pre><code>Markdown 文件
+    ↓
+构建时读取并解析
+    ↓
+生成静态 HTML
+    ↓
+部署到 GitHub Pages
+</code></pre>
+<h2>总结</h2>
+<p>SSG 是构建现代静态网站的理想选择，结合了性能、SEO 和开发效率。</p>
+<p>如果你的内容在构建时就能确定，SSG 是最佳选择。</p>
+2:["$","div",null,{"className":"min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 pt-24 px-4","children":["$","article",null,{"className":"container mx-auto max-w-4xl","children":[["$","$L6",null,{"href":"/blog","className":"inline-block mb-8 text-blue-400 hover:text-blue-300","children":"← 返回文章列表"}],["$","header",null,{"className":"mb-10","children":[["$","h1",null,{"className":"text-4xl md:text-5xl font-bold text-white mb-4","children":"Next.js 静态站点生成（SSG）详解"}],["$","div",null,{"className":"flex items-center text-gray-500","children":["$","time",null,{"dateTime":"2026-02-01","children":"2026-02-01"}]}]]}],["$","div",null,{"className":"prose prose-invert prose-lg max-w-none bg-gray-900 border border-gray-800 rounded-lg p-8","dangerouslySetInnerHTML":{"__html":"$8"}}]]}]}]
+7:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"Next.js 静态站点生成（SSG）详解"}],["$","meta","3",{"name":"description","content":"深入理解 Next.js 的静态站点生成原理和使用方法。"}]]
+1:null
